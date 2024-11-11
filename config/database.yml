@@ -82,6 +82,9 @@ test:
 #
 production:
   <<: *default
-  database: cache_me_if_you_can_production
-  username: cache_me_if_you_can
-  password: <%= ENV["CACHE_ME_IF_YOU_CAN_DATABASE_PASSWORD"] %>
+	database: <%= ENV['RDS_DB_NAME'] %>
+	host: <%= ENV['RDS_HOSTNAME'] %>
+	password: <%= ENV['RDS_PASSWORD'] %>
+	port: <%= ENV['RDS_PORT'] %>
+	username: <%= ENV['RDS_USERNAME'] %>
+  
