@@ -36,3 +36,6 @@
 
 #mac stuff
 .DS_Store
+
+#so i can keep my .pem file in the same folder
+*.pem
