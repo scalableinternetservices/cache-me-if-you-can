@@ -39,3 +39,6 @@
 
 #so i can keep my .pem file in the same folder
 *.pem
+
+# Vinayak's IDE stuff
+.idea/
