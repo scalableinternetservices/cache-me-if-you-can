@@ -1,0 +1,18 @@
+<div style="text-align: center; margin-top: 50px;">
+  <h1>Welcome to Our Website</h1>
+
+  <% if @current_user %>
+    <p>Hello, <%= @current_user.username %>!</p>
+    <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-primary" %>
+  <% else %>
+    <p>Please log in to personalize your experience.</p>
+    <%= link_to "Log In", login_path, class: "btn btn-primary" %>
+  <% end %>
+
+  <div style="margin-top: 20px;">
+    <%= form_with url: search_path, method: :get, local: true do |form| %>
+      <%= form.text_field :query, placeholder: "Search...", required: true, class: "form-control", style: "width: 50%; margin: auto;" %>
+      <%= form.submit "Search", class: "btn btn-secondary", style: "margin-top: 10px;" %>
+    <% end %>
+  </div>
+</div>
