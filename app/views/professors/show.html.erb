@@ -1,0 +1,22 @@
+<div style="text-align: center; margin-top: 50px;">
+  <h1>Professor: <%= @professor.name %></h1>
+
+  <p><strong>Department:</strong> <%= @professor.department %></p>
+  <p><strong>University:</strong> <%= @professor.university %></p>
+
+  <h2>Reviews</h2>
+  <% if @professor.reviews.any? %>
+    <ul>
+      <% @professor.reviews.each do |review| %>
+        <li>
+          <strong><%= review.student.username %>:</strong> <%= review.content %>
+          <br><strong>Rating:</strong> <%= review.rating %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No reviews yet.</p>
+  <% end %>
+
+  <%= link_to 'Create a new review', new_professor_review_path(@professor), class: 'btn btn-success' %>
+</div>

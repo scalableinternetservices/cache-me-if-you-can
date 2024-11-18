@@ -1,0 +1,47 @@
+<div style="text-align: center; margin-top: 50px;">
+<h1>Welcome to Our Website</h1>
+
+  <% if @current_user %>
+    <p>Hello, <%= @current_user.username %>!</p>
+    <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-primary" %>
+  <% else %>
+    <p>Please log in to personalize your experience.</p>
+    <%= link_to "Log In", login_path, class: "btn btn-primary" %>
+  <% end %>
+
+  <h1>Professors</h1>
+  <%= link_to 'New Professor', new_professor_path, class: 'btn btn-success', style: 'margin-bottom: 20px;' %>
+
+  <!-- Search Form -->
+  <div style="margin-top: 20px;">
+    <%= form_with url: search_path, method: :get, local: true do |form| %>
+      <%= form.text_field :query, placeholder: "Search...", required: true, class: "form-control", style: "width: 50%; margin: 0 auto;" %>
+      <%= form.submit "Search", class: "btn btn-secondary", style: "margin-top: 10px;" %>
+    <% end %>
+  </div>
+
+  <!-- Centering Table with Container -->
+  <div style="width: 80%; margin: 20px auto;">
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px; text-align: center;">
+      <thead>
+        <tr>
+          <th style="border-bottom: 1px solid #ddd; padding: 8px;">Name</th>
+          <th style="border-bottom: 1px solid #ddd; padding: 8px;">Department</th>
+          <th style="border-bottom: 1px solid #ddd; padding: 8px;">University</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @professors.each do |professor| %>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= professor.name %></td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= professor.department %></td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= professor.university %></td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+              <%= link_to 'Show', professor_path(professor), class: 'btn btn-primary' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       @student = Student.find_by(username: params[:username])
       if @student&.password == params[:password]
         session[:student_id] = @student.id
-        redirect_to root_path, notice: "Logged in successfully."
+        redirect_to professors_path, notice: "Logged in successfully."
       else
         flash.alert = "Invalid username or password."
         render :new, status: :unprocessable_entity
