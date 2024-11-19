@@ -1,0 +1,27 @@
+<%= form_with(model: @course, local: true) do |form| %>
+    <div>
+      <%= form.label :name, "Course Name" %>
+      <%= form.text_field :name, required: true %>
+    </div>
+  
+    <div>
+      <%= form.label :code, "Course Code" %>
+      <%= form.text_field :code, required: true %>
+    </div>
+  
+    <div>
+      <%= form.label :professor_id, "Select Professor" %>
+      <%= form.collection_select :professor_id, @professors, :id, :name, prompt: "Select a Professor" %>
+    </div>
+  
+    <div>
+      <%= form.label :description, "Course Description" %>
+      <%= form.text_area :description %>
+    </div>
+  
+    <div>
+      <%= form.submit "Create Course" %>
+    </div>
+  <% end %>
+  
+  

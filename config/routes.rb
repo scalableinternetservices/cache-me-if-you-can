@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index]
     resources :comments, only: [:index, :new, :create]
   end
-  resources :reviews, only: [:show, :edit, :update, :destroy] do
+  resources :reviews, only: [:new, :create] do
     resources :comments, only: [:index, :create]
   end
-  resources :courses
+  resources :courses, only: [:new, :create]
   
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"

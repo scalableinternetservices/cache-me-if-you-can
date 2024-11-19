@@ -9,7 +9,7 @@
     <ul>
       <% @professor.reviews.each do |review| %>
         <li>
-          <strong><%= review.student.username %>:</strong> <%= review.content %>
+          <strong>"anonymous user"</strong> <%= review.content %>
           <br><strong>Rating:</strong> <%= review.rating %>
         </li>
       <% end %>
@@ -18,5 +18,8 @@
     <p>No reviews yet.</p>
   <% end %>
 
-  <%= link_to 'Create a new review', new_professor_review_path(@professor), class: 'btn btn-success' %>
+  <%= link_to 'Create a new review', new_professor_review_path(@professor) %>
+  <br>
+  <%= link_to 'Back to Professors List', professors_path %>
+
 </div>
