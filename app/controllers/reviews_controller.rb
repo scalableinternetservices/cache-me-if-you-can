@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
     before_action :set_professor, only: [:new, :create]
+    before_action :authenticate_user!, only: [:new, :create]
 
     def new
         @review = @professor.reviews.build
@@ -27,4 +28,11 @@ class ReviewsController < ApplicationController
     def review_params
         params.require(:review).permit(:content, :rating, :professor_id, :course_id)
     end
+
+    def authenticate_user!
+        unless session[:student_id]
+            redirect_to login_path, alert: 'You need to log in to create a review.'
+        end
+    end
 end
+

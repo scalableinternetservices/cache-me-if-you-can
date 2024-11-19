@@ -14,9 +14,19 @@
       <%= form.label :course_id, "Course" %>
       <%= form.collection_select :course_id, @courses, :id, :name, prompt: "Select a course" %>
     </div>
-  
+
+    <!-- Link to create a new course -->
+    <div>
+      <%= link_to 'Create a New Course', new_course_path, class: 'btn btn-link' %>
+    </div>
+
     <div>
       <%= form.submit "Submit Review" %>
+    </div>
+
+    <!-- Link to prof show page -->
+    <div>
+      <%= link_to 'Go back', professor_path(@professor) %>
     </div>
   <% end %>
   
