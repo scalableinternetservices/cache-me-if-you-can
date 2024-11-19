@@ -42,3 +42,11 @@
 
 # Vinayak's IDE stuff
 .idea/
+
+#Sarah's virtual python stuff
+Pipfile
+Pipfile.lock
+
+#locust stuff
+locustfile.py
+*.har
