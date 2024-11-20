@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_18_011504) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_19_034912) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_18_011504) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "professor_id"
   end
 
   create_table "courses_professors", id: false, force: :cascade do |t|
@@ -40,6 +41,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_18_011504) do
   create_table "professors", force: :cascade do |t|
     t.string "name"
     t.string "department"
+    t.string "university"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,6 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_18_011504) do
     t.bigint "professor_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "course_id"
     t.index ["professor_id"], name: "index_reviews_on_professor_id"
     t.index ["student_id"], name: "index_reviews_on_student_id"
   end
