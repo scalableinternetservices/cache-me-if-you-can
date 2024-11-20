@@ -14,6 +14,7 @@
           </strong>:
           <%= review.content %>
           <br><strong>Rating:</strong> <%= review.rating %>
+          <br><strong>Class:</strong> <%= review.course.name if review.course %>
         </li>
       <% end %>
     </ul>
