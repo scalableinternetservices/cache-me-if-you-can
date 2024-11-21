@@ -21,6 +21,16 @@ class ProfessorsController < ApplicationController
         render :new
       end
     end
+
+    def search
+      if params[:query].present?
+        @professors = Professor.where("name LIKE ?", "%#{params[:query]}%")
+      else
+        @professors = Professor.all
+      end
+
+      render :index
+    end
   
     private
   

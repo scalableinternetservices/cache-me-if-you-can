@@ -15,7 +15,7 @@
   <!-- Search Form -->
   <div style="margin-top: 20px;">
     <%= form_with url: search_path, method: :get, local: true do |form| %>
-      <%= form.text_field :query, placeholder: "Search...", required: true, class: "form-control", style: "width: 50%; margin: 0 auto;" %>
+      <%= form.text_field :query, placeholder: "Search for a professor...", required: true, class: "form-control", style: "width: 50%; margin: 0 auto;" %>
       <%= form.submit "Search", class: "btn btn-secondary", style: "margin-top: 10px;" %>
     <% end %>
   </div>
@@ -31,17 +31,22 @@
         </tr>
       </thead>
       <tbody>
-        <% @professors.each do |professor| %>
+        <% if @professors.any? %>
+          <% @professors.each do |professor| %>
+            <tr>
+              <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= professor.name %></td>
+              <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= professor.department %></td>
+              <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= professor.university %></td>
+              <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                <%= link_to 'Show', professor_path(professor), class: 'btn btn-primary' %>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
           <tr>
-            <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= professor.name %></td>
-            <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= professor.department %></td>
-            <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= professor.university %></td>
-            <td style="padding: 8px; border-bottom: 1px solid #ddd;">
-              <%= link_to 'Show', professor_path(professor), class: 'btn btn-primary' %>
-            </td>
+            <td colspan="4" style="padding: 8px; border-bottom: 1px solid #ddd;">No professors found.</td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
-</div>
