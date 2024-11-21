@@ -8,6 +8,15 @@ class ReviewsController < ApplicationController
         @current_user = Student.find_by(id: session[:student_id]) if session[:student_id]
     end
 
+    def show 
+        @review = Review.find_by(id: params[:id])
+        if @review.nil?
+            redirect_to professor_path, alert: "review not found"
+        else
+            @comments = @review.comments
+        end
+    end
+
     def create
         @review = @professor.reviews.build(review_params)
         @review.student_id = session[:student_id]

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root "professors#index"
   resources :professors do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:new, :create, :index, :show] do
+      resources :comments, only: [:create, :destroy]
+    end
   end
   get "search", to: "professors#search", as: "search"
   resources :students do
