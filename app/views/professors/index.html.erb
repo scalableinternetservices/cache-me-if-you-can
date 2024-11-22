@@ -1,5 +1,5 @@
 <div style="text-align: center; margin-top: 50px;">
-<h1>Welcome to Our Website</h1>
+<h1>Welcome to UCSB Rate My Professor</h1>
 
   <% if @current_user %>
     <p>Hello, <%= @current_user.username %>!</p>
@@ -36,7 +36,6 @@
             <tr>
               <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= professor.name %></td>
               <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= professor.department %></td>
-              <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= professor.university %></td>
               <td style="padding: 8px; border-bottom: 1px solid #ddd;">
                 <%= link_to 'Show', professor_path(professor), class: 'btn btn-primary' %>
               </td>
