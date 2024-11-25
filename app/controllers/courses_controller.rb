@@ -1,4 +1,11 @@
 class CoursesController < ApplicationController
+  def index
+    if params[:search].present?
+      @courses = Course.where("name ILIKE ? OR code ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+    else
+      @courses = Course.all
+    end
+  end
     def new
       @course = Course.new
       @professors = Professor.all  # Load all professors for the dropdown
@@ -12,7 +19,7 @@ class CoursesController < ApplicationController
         render :new
       end
     end
-  
+
     private
   
     def course_params
