@@ -1,7 +1,7 @@
 class ProfessorsController < ApplicationController
+  before_action :show_user, only: [:index, :search]
     def index
       @professors = Professor.all
-      @current_user = Student.find_by(id: session[:student_id]) if session[:student_id]
     end
   
     def show
@@ -23,7 +23,7 @@ class ProfessorsController < ApplicationController
     end
 
     def search
-      if params[:query].present?
+      if params[:query].present? and params[:query].length > 0
         @professors = Professor.where("name LIKE ?", "%#{params[:query]}%")
       else
         @professors = Professor.all
@@ -36,6 +36,10 @@ class ProfessorsController < ApplicationController
   
     def professor_params
       params.require(:professor).permit(:name, :department)
+    end
+
+    def show_user
+      @current_user = Student.find_by(id: session[:student_id]) if session[:student_id]
     end
   end
   
