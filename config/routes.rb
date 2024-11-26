@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:new, :create] do
     resources :comments, only: [:index, :create]
   end
-  resources :courses, only: [:new, :create]
+  resources :courses
   
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"

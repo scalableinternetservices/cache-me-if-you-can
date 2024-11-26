@@ -15,7 +15,7 @@
   <!-- Search Form -->
   <div style="margin-top: 20px;">
     <%= form_with url: search_path, method: :get, local: true do |form| %>
-      <%= form.text_field :query, placeholder: "Search for a professor...", required: true, class: "form-control", style: "width: 50%; margin: 0 auto;" %>
+      <%= form.text_field :query, placeholder: "Search for a professor...", required: false, class: "form-control", style: "width: 50%; margin: 0 auto;" %>
       <%= form.submit "Search", class: "btn btn-secondary", style: "margin-top: 10px;" %>
     <% end %>
   </div>
