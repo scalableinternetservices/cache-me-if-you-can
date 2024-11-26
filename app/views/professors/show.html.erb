@@ -14,8 +14,9 @@
           <%= review.content %>
           <br><strong>Rating:</strong> <%= review.rating %>
           <br><strong>Class:</strong> <%= review.course.name if review.course %>
+          <br><strong>Comments:</strong> <%= review.comments.count %>
           <br>
-          <%= link_to "View Comments", professor_review_path(@professor, review), class: "btd btn-info"%>
+          <%= link_to "View Comments", professor_review_path(@professor, review), class: "btn btn-info" %>
         </li>
       <% end %>
     </ul>
