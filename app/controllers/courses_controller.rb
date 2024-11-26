@@ -14,16 +14,21 @@ class CoursesController < ApplicationController
     def create
       @course = Course.new(course_params)
       if @course.save
-        redirect_to professors_path, notice: "Course was successfully created."
+        redirect_to courses_path, notice: "Course was successfully created."
       else
         render :new
       end
     end
 
+    def show
+      @course = Course.find(params[:id])
+      @professors = @course.professors  # Fetches all professors associated with the course
+    end
+
     private
   
     def course_params
-      params.require(:course).permit(:name, :code, :description, :professor_id)
+      params.require(:course).permit(:name, :code, :description)
     end
   end
   

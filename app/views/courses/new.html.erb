@@ -10,11 +10,6 @@
     </div>
   
     <div>
-      <%= form.label :professor_id, "Select Professor" %>
-      <%= form.collection_select :professor_id, @professors, :id, :name, prompt: "Select a Professor" %>
-    </div>
-  
-    <div>
       <%= form.label :description, "Course Description" %>
       <%= form.text_area :description %>
     </div>
