@@ -3,6 +3,10 @@
 
   <p><strong>Department:</strong> <%= @professor.department %></p>
 
+  <% if @average_rating %>
+    <p><strong>Average Rating:</strong> <%= @average_rating %> </p>
+  <% end %>
+
   <h2>Reviews</h2>
   <% if @professor.reviews.any? %>
     <ul>
@@ -14,8 +18,9 @@
           <%= review.content %>
           <br><strong>Rating:</strong> <%= review.rating %>
           <br><strong>Class:</strong> <%= review.course.name if review.course %>
+          <br><strong>Comments:</strong> <%= review.comments.count %>
           <br>
-          <%= link_to "View Comments", professor_review_path(@professor, review), class: "btd btn-info"%>
+          <%= link_to "View Comments", professor_review_path(@professor, review), class: "btn btn-info" %>
         </li>
       <% end %>
     </ul>
