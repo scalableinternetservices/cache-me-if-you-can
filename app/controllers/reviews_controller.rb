@@ -17,16 +17,33 @@ class ReviewsController < ApplicationController
         end
     end
 
+    # def create
+    #     @review = @professor.reviews.build(review_params)
+    #     @review.student_id = session[:student_id]
+    #     if @review.save
+    #         redirect_to professor_path(@professor), notice: 'Review created successfully.'
+    #     else
+    #         @courses = Course.all
+    #         render :new
+    #     end
+    # end
+
     def create
         @review = @professor.reviews.build(review_params)
         @review.student_id = session[:student_id]
+    
         if @review.save
+            # Ensure the professor-course association exists in the join table
+            unless @professor.courses.exists?(id: @review.course_id)
+                @professor.courses << Course.find(@review.course_id)
+            end
             redirect_to professor_path(@professor), notice: 'Review created successfully.'
         else
             @courses = Course.all
             render :new
         end
     end
+    
 
     private
 

@@ -1,0 +1,29 @@
+<h1>Course: <%= @course.name %></h1>
+<p>Course Code: <%= @course.code %></p>
+<p>Description: <%= @course.description %></p>
+
+<h2>Professors Associated with This Course</h2>
+
+<table border="1" cellspacing="0" cellpadding="8" style="width: 100%; text-align: left; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th style="width: 70%; padding: 8px;">Professor Name</th>
+      <th style="width: 30%; padding: 8px;">Review Page</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @professors.each do |professor| %>
+      <tr>
+        <td style="padding: 8px;"><%= professor.name %></td>
+        <td style="padding: 8px;">
+          <%= link_to 'View Review Page', professor_path(professor), style: "text-decoration: none; color: #007bff;" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!-- Link to go back to the courses index page -->
+<div style="margin-top: 20px;">
+  <%= link_to 'Back to Courses', courses_path, style: "text-decoration: none; color: #007bff;" %>
+</div>
