@@ -3,6 +3,10 @@
 
   <p><strong>Department:</strong> <%= @professor.department %></p>
 
+  <% if @average_rating %>
+    <p><strong>Average Rating:</strong> <%= @average_rating %> </p>
+  <% end %>
+
   <h2>Reviews</h2>
   <% if @professor.reviews.any? %>
     <ul>

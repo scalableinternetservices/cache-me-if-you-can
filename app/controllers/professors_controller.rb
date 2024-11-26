@@ -7,6 +7,14 @@ class ProfessorsController < ApplicationController
     def show
       @professor = Professor.find(params[:id])
       @reviews = @professor.reviews
+
+      if @reviews.any?
+        aggregate_rating = @reviews.sum(:rating)
+        count = @reviews.count
+        @average_rating = (aggregate_rating.to_f / count).round(2)
+      else
+        @average_rating = nil
+      end
     end
   
     def new
