@@ -12,6 +12,7 @@ class ProfessorsController < ApplicationController
       if params[:course_id].present?
         @selected_course = Course.find(params[:course_id])
         @reviews = @professor.reviews.where(course: @selected_course)
+        @rating_calculation_reviews = @professor.reviews.where(course_id: params[:course_id])
       else
         @selected_course = nil
         @reviews = @professor.reviews
