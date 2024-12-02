@@ -6,11 +6,22 @@ class ProfessorsController < ApplicationController
   
     def show
       @professor = Professor.find(params[:id])
-      @reviews = @professor.reviews
+      @rating_calculation_reviews = @professor.reviews
+      @courses = @professor.courses.distinct.order(:name)
 
-      if @reviews.any?
-        aggregate_rating = @reviews.sum(:rating)
-        count = @reviews.count
+      if params[:course_id].present?
+        @selected_course = Course.find(params[:course_id])
+        @reviews = @professor.reviews.where(course: @selected_course)
+        @rating_calculation_reviews = @professor.reviews.where(course_id: params[:course_id])
+      else
+        @selected_course = nil
+        @reviews = @professor.reviews
+      end
+
+
+      if @rating_calculation_reviews.any?
+        aggregate_rating = @rating_calculation_reviews.sum(:rating)
+        count = @rating_calculation_reviews.count
         @average_rating = (aggregate_rating.to_f / count).round(2)
       else
         @average_rating = nil
