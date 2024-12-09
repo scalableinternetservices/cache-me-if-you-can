@@ -7,10 +7,17 @@
     <p><strong>Average Rating:</strong> <%= @average_rating %> </p>
   <% end %>
 
+  <h2>Filter Reviews by Class</h2>
+  <%= form_with url: professor_path(@professor), method: :get, local: true do |form| %>
+    <%= form.label :course_id, "Select a class:" %>
+    <%= form.select :course_id, options_from_collection_for_select(@courses, :id, :name, @selected_course&.id), include_blank: "All Classes" %>
+    <%= form.submit "Filter" %>
+  <% end %>
+
   <h2>Reviews</h2>
-  <% if @professor.reviews.any? %>
+  <% if @reviews.any? %>
     <ul>
-      <% @professor.reviews.each do |review| %>
+      <% @reviews.each do |review| %>
         <li>
           <strong>
             <%= review.student ? review.student.username : "anonymous user" %>
