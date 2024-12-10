@@ -1,7 +1,10 @@
 class ProfessorsController < ApplicationController
   before_action :show_user, only: [:index, :search]
     def index
-      @professors = Professor.all
+      @page = (params[:page] || 1).to_i
+      @per_page = 10 # Number of professors per page
+      @total_pages = (Professor.count / @per_page.to_f).ceil
+      @professors = Professor.offset((@page - 1) * @per_page).limit(@per_page)
     end
   
     def show
@@ -42,11 +45,17 @@ class ProfessorsController < ApplicationController
     end
 
     def search
+      @page = (params[:page] || 1).to_i
+      @per_page = 10 # Number of professors per page
+
       if params[:query].present? and params[:query].length > 0
         @professors = Professor.where("name LIKE ?", "%#{params[:query]}%")
       else
         @professors = Professor.all
       end
+
+      @total_pages = (@professors.size / @per_page.to_f).ceil
+      @professors = @professors.offset((@page - 1) * @per_page).limit(@per_page)
 
       render :index
     end
