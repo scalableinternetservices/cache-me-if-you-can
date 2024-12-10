@@ -9,12 +9,21 @@ class ReviewsController < ApplicationController
     end
 
     def show 
+        @page = (params[:page] || 1).to_i
+        @per_page = 5 # Number of comments per page
+
         @review = Review.find_by(id: params[:id])
         if @review.nil?
             redirect_to professor_path, alert: "review not found"
         else
             @comments = @review.comments
         end
+
+        @total_pages = (@comments.size / @per_page.to_f).ceil
+        if @total_pages == 0
+          @total_pages = 1
+        end
+        @comments = @comments.offset((@page - 1) * @per_page).limit(@per_page)
     end
 
     # def create
