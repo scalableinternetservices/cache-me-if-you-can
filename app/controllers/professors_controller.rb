@@ -4,10 +4,15 @@ class ProfessorsController < ApplicationController
       @page = (params[:page] || 1).to_i
       @per_page = 10 # Number of professors per page
       @total_pages = (Professor.count / @per_page.to_f).ceil
+      if @total_pages == 0
+        @total_pages = 1
+      end
       @professors = Professor.offset((@page - 1) * @per_page).limit(@per_page)
     end
   
     def show
+      @page = (params[:page] || 1).to_i
+      @per_page = 3 # Number of reviews per page
       @professor = Professor.find(params[:id])
       @rating_calculation_reviews = @professor.reviews
       @courses = @professor.courses.distinct.order(:name)
@@ -21,7 +26,12 @@ class ProfessorsController < ApplicationController
         @reviews = @professor.reviews
       end
 
-
+      @total_pages = (@reviews.size / @per_page.to_f).ceil
+      if @total_pages == 0
+        @total_pages = 1
+      end
+      @reviews = @reviews.offset((@page - 1) * @per_page).limit(@per_page)
+      
       if @rating_calculation_reviews.any?
         aggregate_rating = @rating_calculation_reviews.sum(:rating)
         count = @rating_calculation_reviews.count
@@ -55,6 +65,9 @@ class ProfessorsController < ApplicationController
       end
 
       @total_pages = (@professors.size / @per_page.to_f).ceil
+      if @total_pages == 0
+        @total_pages = 1
+      end
       @professors = @professors.offset((@page - 1) * @per_page).limit(@per_page)
 
       render :index

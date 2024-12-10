@@ -35,6 +35,19 @@
     <p>No reviews yet.</p>
   <% end %>
 
+  <!-- Pagination -->
+  <div style="margin-top: 20px; text-align: center;">
+    <% if @page > 1 %>
+        <%= link_to 'Previous', professor_path(@professor, page: @page - 1), class: 'btn btn-secondary' %>
+    <% end %>
+    
+    <span style="margin: 0 10px;">Page <%= @page %> of <%= @total_pages %></span>
+    
+    <% if @page < @total_pages %>
+        <%= link_to 'Next', professor_path(@professor, page: @page + 1), class: 'btn btn-secondary' %>
+    <% end %>
+  </div>
+
   <%= link_to 'Create a new review', new_professor_review_path(@professor) %>
   <br>
   <%= link_to 'Back to Professors List', professors_path %>
