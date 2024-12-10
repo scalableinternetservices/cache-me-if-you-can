@@ -35,6 +35,19 @@
   </tbody>
 </table>
 
+<!-- Pagination --> 
+<div style="margin-top: 20px; text-align: center;">
+  <% if @page > 1 %>
+      <%= link_to 'Previous', courses_path(params[:search], commit: params[:commit], page: @page - 1), class: 'btn btn-secondary' %>
+  <% end %>
+  
+  <span style="margin: 0 10px;">Page <%= @page %> of <%= @total_pages %></span>
+  
+  <% if @page < @total_pages %>
+      <%= link_to 'Next', courses_path(params[:search], commit: params[:commit], page: @page + 1), class: 'btn btn-secondary' %>
+  <% end %>
+</div>
+
 <!-- Link to create a new course -->
 <div style="margin-top: 20px;">
   <%= link_to 'Create a New Course', new_course_path, style: "display: inline-block; padding: 10px 15px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px;" %>
