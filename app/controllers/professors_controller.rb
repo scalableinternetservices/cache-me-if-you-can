@@ -2,7 +2,7 @@ class ProfessorsController < ApplicationController
   before_action :show_user, only: [:index, :search]
     def index
       @page = (params[:page] || 1).to_i
-      @per_page = 10 # Number of professors per page
+      @per_page = 50 # Number of professors per page
       @total_pages = (Professor.count / @per_page.to_f).ceil
       if @total_pages == 0
         @total_pages = 1
@@ -12,7 +12,7 @@ class ProfessorsController < ApplicationController
   
     def show
       @page = (params[:page] || 1).to_i
-      @per_page = 3 # Number of reviews per page
+      @per_page = 10 # Number of reviews per page
       @professor = Professor.find(params[:id])
       @rating_calculation_reviews = @professor.reviews
       @courses = @professor.courses.distinct.order(:name)

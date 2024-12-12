@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   def index
     @page = (params[:page] || 1).to_i
-    @per_page = 10 # Number of courses per page
+    @per_page = 50 # Number of courses per page
     if params[:search].present?
       @courses = Course.where("name ILIKE ? OR code ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
     else

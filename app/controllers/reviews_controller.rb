@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
 
     def show 
         @page = (params[:page] || 1).to_i
-        @per_page = 5 # Number of comments per page
+        @per_page = 10 # Number of comments per page
 
         @review = Review.find_by(id: params[:id])
         if @review.nil?
