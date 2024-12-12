@@ -1,25 +1,32 @@
-<h1>Register</h1>
+<div class="login-container">
+  <%= image_tag "rmp.jpg", alt: "RMP Logo", class: "login-logo" %>
+  <h1>Register</h1>
 
-<% if flash.alert %>
-  <div style="color: red;">
-    <%= flash.alert %>
+  <% if flash.alert %>
+    <div class="alert">
+      <%= flash.alert %>
+    </div>
+  <% end %>
+
+  <%= form_with model: @student, local: true, class: "login-form" do |form| %>
+    <div class="form-group">
+      <%= form.label :username, "Username" %>
+      <%= form.text_field :username, required: true, class: "form-input" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :password, "Password" %>
+      <%= form.password_field :password, required: true, class: "form-input" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Register", class: "login-button" %>
+    </div>
+  <% end %>
+
+  <div class="links">
+    <%= link_to "Already have an account? Log in here.", login_path, class: "link" %>
   </div>
-<% end %>
+</div>
 
-<%= form_with model: @student, local: true do |form| %>
-  <div>
-    <%= form.label :username, "Username" %>
-    <%= form.text_field :username, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :password, "Password" %>
-    <%= form.password_field :password, required: true %>
-  </div>
-
-  <div>
-    <%= form.submit "Register" %>
-  </div>
-<% end %>
-
-<%= link_to "Already have an account? Log in here.", login_path %>
+<%= stylesheet_link_tag "sessions", media: "all" %>

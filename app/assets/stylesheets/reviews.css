@@ -1,0 +1,176 @@
+#review-new-page {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  #review-new-page .review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  #review-new-page .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #review-new-page .form-label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  #review-new-page .form-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  #review-new-page .form-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+  }
+  
+  #review-new-page .btn-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  #review-new-page .btn-link:hover {
+    text-decoration: underline;
+  }
+  
+  #review-new-page .submit-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  #review-new-page .submit-button:hover {
+    background-color: #218838;
+  }
+  
+  #review-new-page .btn-secondary {
+    color: #6c757d;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  #review-new-page .btn-secondary:hover {
+    text-decoration: underline;
+    color: #5a6268;
+  }
+  
+  #review-show-page {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  #review-show-page h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  #review-show-page p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #555;
+  }
+  
+  #review-show-page .comments-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #review-show-page .comment-item {
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  #review-show-page .no-comments {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+  }
+  
+  #review-show-page .comment-form {
+    margin-top: 20px;
+  }
+  
+  #review-show-page .form-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  #review-show-page .form-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+  }
+  
+  #review-show-page .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  
+  #review-show-page .btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+  }
+  
+  #review-show-page .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  #review-show-page .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+  }
+  
+  #review-show-page .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+  
+  #review-show-page .login-to-comment {
+    text-align: center;
+    margin-top: 20px;
+    color: #555;
+  }
+  
+  #review-show-page .login-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  #review-show-page .login-link:hover {
+    text-decoration: underline;
+  }
+  
