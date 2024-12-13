@@ -1,27 +1,33 @@
-<h1>Log In</h1>
+<div class="login-container">
+  <%= image_tag "rmp.jpg", alt: "RMP Logo", class: "login-logo" %>
+  
+  <h1>Log In</h1>
 
-<% if flash.alert %>
-  <div style="color: red;">
-    <%= flash.alert %>
+  <% if flash.alert %>
+    <div class="alert">
+      <%= flash.alert %>
+    </div>
+  <% end %>
+
+  <%= form_with url: login_path, method: :post, class: "login-form" do |form| %>
+    <div class="form-group">
+      <%= form.label :username %>
+      <%= form.text_field :username, required: true, class: "form-input" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :password %>
+      <%= form.password_field :password, required: true, class: "form-input" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Log In", class: "login-button" %>
+    </div>
+  <% end %>
+
+  <div class="links">
+    <%= link_to "Don't have an account? Register here.", new_student_path, class: "link" %>
+    <br>
+    <%= link_to "Continue as a guest.", professors_path, class: "link" %>
   </div>
-<% end %>
-
-<%= form_with url: login_path, method: :post do |form| %>
-  <div>
-    <%= form.label :username %>
-    <%= form.text_field :username, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password, required: true %>
-  </div>
-
-  <div>
-    <%= form.submit "Log In" %>
-  </div>
-<% end %>
-
-<%= link_to "Don't have an account? Register here.", new_student_path %>
-<br>
-<%= link_to "Continue as a guest.", professors_path %>
+</div>

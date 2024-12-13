@@ -1,0 +1,107 @@
+#professor-show-page {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  #professor-show-page .professor-title {
+    font-size: 28px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #professor-show-page .professor-info {
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  #professor-show-page .section-title {
+    font-size: 22px;
+    color: #444;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  
+  #professor-show-page .filter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  #professor-show-page .form-group {
+    margin-bottom: 15px;
+  }
+  
+  #professor-show-page .form-label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  #professor-show-page .form-select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  #professor-show-page .filter-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #professor-show-page .filter-button:hover {
+    background-color: #0056b3;
+  }
+  
+  #professor-show-page .review-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #professor-show-page .review-item {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  #professor-show-page .review-item p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #444;
+  }
+  
+  #professor-show-page .no-reviews {
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+  }
+  
+  #professor-show-page .actions {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  #professor-show-page .action-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  #professor-show-page .action-link:hover {
+    text-decoration: underline;
+  }
+  

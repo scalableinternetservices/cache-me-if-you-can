@@ -1,22 +1,22 @@
-<%= form_with(model: @course, local: true) do |form| %>
-    <div>
-      <%= form.label :name, "Course Name" %>
-      <%= form.text_field :name, required: true %>
+<div id="course-new-page" class="course-form-container">
+  <%= form_with(model: @course, local: true, class: "course-form") do |form| %>
+    <div class="form-group">
+      <%= form.label :name, "Course Name", class: "form-label" %>
+      <%= form.text_field :name, required: true, class: "form-input" %>
     </div>
-  
-    <div>
-      <%= form.label :code, "Course Code" %>
-      <%= form.text_field :code, required: true %>
+
+    <div class="form-group">
+      <%= form.label :code, "Course Code", class: "form-label" %>
+      <%= form.text_field :code, required: true, class: "form-input" %>
     </div>
-  
-    <div>
-      <%= form.label :description, "Course Description" %>
-      <%= form.text_area :description %>
+
+    <div class="form-group">
+      <%= form.label :description, "Course Description", class: "form-label" %>
+      <%= form.text_area :description, class: "form-input" %>
     </div>
-  
-    <div>
-      <%= form.submit "Create Course" %>
+
+    <div class="form-group">
+      <%= form.submit "Create Course", class: "btn btn-primary" %>
     </div>
   <% end %>
-  
-  
+</div>

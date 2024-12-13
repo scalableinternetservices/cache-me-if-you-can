@@ -1,41 +1,44 @@
-<div style="text-align: center; margin-top: 50px;">
-  <h1>Professor: <%= @professor.name %></h1>
+<div id="professor-show-page" class="professor-container">
+  <h1 class="professor-title">Professor: <%= @professor.name %></h1>
 
-  <p><strong>Department:</strong> <%= @professor.department %></p>
+  <p class="professor-info"><strong>Department:</strong> <%= @professor.department %></p>
 
   <% if @average_rating %>
-    <p><strong>Average Rating:</strong> <%= @average_rating %> </p>
+    <p class="professor-info"><strong>Average Rating:</strong> <%= @average_rating %></p>
+  <% end %>
+  
+  <div class="actions">
+    <%= link_to 'Create a new review', new_professor_review_path(@professor), class: "action-link" %>
+    <br>
+    <%= link_to 'Back to Professors List', professors_path, class: "action-link" %>
+  </div>
+
+  <h2 class="section-title">Filter Reviews by Class</h2>
+  <%= form_with url: professor_path(@professor), method: :get, local: true, class: "filter-form" do |form| %>
+    <div class="form-group">
+      <%= form.label :course_id, "Select a class:", class: "form-label" %>
+      <%= form.select :course_id, options_from_collection_for_select(@courses, :id, :name, @selected_course&.id), include_blank: "All Classes", class: "form-select" %>
+    </div>
+    <div class="form-group">
+      <%= form.submit "Filter", class: "filter-button" %>
+    </div>
   <% end %>
 
-  <h2>Filter Reviews by Class</h2>
-  <%= form_with url: professor_path(@professor), method: :get, local: true do |form| %>
-    <%= form.label :course_id, "Select a class:" %>
-    <%= form.select :course_id, options_from_collection_for_select(@courses, :id, :name, @selected_course&.id), include_blank: "All Classes" %>
-    <%= form.submit "Filter" %>
-  <% end %>
-
-  <h2>Reviews</h2>
+  <h2 class="section-title">Reviews</h2>
   <% if @reviews.any? %>
-    <ul>
+    <ul class="review-list">
       <% @reviews.each do |review| %>
-        <li>
-          <strong>
-            <%= review.student ? review.student.username : "anonymous user" %>
-          </strong>:
-          <%= review.content %>
-          <br><strong>Rating:</strong> <%= review.rating %>
-          <br><strong>Class:</strong> <%= review.course.name if review.course %>
-          <br><strong>Comments:</strong> <%= review.comments.count %>
-          <br>
+        <li class="review-item">
+          <p><strong><%= review.student ? review.student.username : "anonymous user" %></strong>: <%= review.content %></p>
+          <p><strong>Rating:</strong> <%= review.rating %></p>
+          <p><strong>Class:</strong> <%= review.course.name if review.course %></p>
+          <p><strong>Comments:</strong> <%= review.comments.count %></p>
           <%= link_to "View Comments", professor_review_path(@professor, review), class: "btn btn-info" %>
         </li>
       <% end %>
     </ul>
   <% else %>
-    <p>No reviews yet.</p>
+    <p class="no-reviews">No reviews yet.</p>
   <% end %>
 
-  <%= link_to 'Create a new review', new_professor_review_path(@professor) %>
-  <br>
-  <%= link_to 'Back to Professors List', professors_path %>
 </div>
